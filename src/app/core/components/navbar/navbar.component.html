@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+    <button mat-button>Home</button>    
+    <button mat-button>Shopping Cart</button>    
+    <button mat-button [matMenuTriggerFor]="menu"> Username
+        <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>My Orders</button>
+        <button mat-menu-item>Manage Orders</button>
+        <button mat-menu-item>Manage Books</button>
+        <button mat-menu-item>Log Out</button>
+    </mat-menu>
+</mat-toolbar-row>
