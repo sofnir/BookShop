@@ -10,8 +10,8 @@
     </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="orders">My Orders</button>
-        <button mat-menu-item routerLink="admin/orders">Manage Orders</button>
-        <button mat-menu-item routerLink="admin/books">Manage Books</button>
+        <button *ngIf="appUser?.isAdmin" mat-menu-item routerLink="admin/orders">Manage Orders</button>
+        <button *ngIf="appUser?.isAdmin" mat-menu-item routerLink="admin/books">Manage Books</button>
         <button mat-menu-item (click)="logout()">Log Out</button>
     </mat-menu>
 </mat-toolbar-row>
