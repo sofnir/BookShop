@@ -15,16 +15,19 @@ import { AdminBooksComponent } from './admin/components/admin-books/admin-books.
 import { ShoppingCartComponent } from './shopping/components/shopping-cart/shopping-cart.component';
 import { OrdersComponent } from './shopping/components/orders/orders.component';
 import { ProductsComponent } from './shopping/components/products/products.component';
+import { LoginComponent } from './core/components/login/login.component';
+import { AuthGuard } from './shared/services/auth-guard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    LoginComponent,
     AdminOrdersComponent,
     AdminBooksComponent,
     ShoppingCartComponent,
     OrdersComponent,
-    ProductsComponent
+    ProductsComponent    
   ],
   imports: [
     BrowserModule,
@@ -34,10 +37,11 @@ import { ProductsComponent } from './shopping/components/products/products.compo
     MaterialModule,
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'orders', component: OrdersComponent },
-      { path: 'admin/orders', component: AdminOrdersComponent },
-      { path: 'admin/books', component: AdminBooksComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
+      { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard] },
+      { path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuard] }
     ])
   ],
   providers: [],

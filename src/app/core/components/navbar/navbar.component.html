@@ -1,14 +1,17 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
     <button mat-button routerLink="">Home</button>    
-    <button mat-button routerLink="shopping-cart">Shopping Cart</button>    
-    <button mat-button [matMenuTriggerFor]="menu"> Username
+    <button mat-button routerLink="shopping-cart">Shopping Cart</button>
+    <ng-template #anonymousUser>
+        <button *ngIf="!appUser" mat-button routerLink="login">Login</button>
+    </ng-template>
+    <button *ngIf="appUser; else anonymousUser" mat-button [matMenuTriggerFor]="menu"> {{ appUser.name }}
         <mat-icon>arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="orders">My Orders</button>
         <button mat-menu-item routerLink="admin/orders">Manage Orders</button>
         <button mat-menu-item routerLink="admin/books">Manage Books</button>
-        <button mat-menu-item>Log Out</button>
+        <button mat-menu-item (click)="logout()">Log Out</button>
     </mat-menu>
 </mat-toolbar-row>
