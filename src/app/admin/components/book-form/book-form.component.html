@@ -1,0 +1,47 @@
+<div id="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">    
+        <div class="form-group">
+            <mat-form-field appearance="standard">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title">
+            </mat-form-field>
+        </div>
+    
+        <div class="form-group">
+            <mat-form-field appearance="standard">
+                <mat-label>Author</mat-label>
+                <input matInput formControlName="author">
+            </mat-form-field>
+        </div>
+    
+        <div class="form-group">
+            <mat-form-field appearance="standard">
+                <mat-label>Price</mat-label>
+                <input type="number" matInput formControlName="price">
+            </mat-form-field>
+        </div>
+        
+        <div class="form-group">
+            <mat-form-field appearance="standard">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="category">
+                    <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    
+        <div class="form-group">
+            <mat-form-field appearance="standard">
+                <mat-label>ImageUrl</mat-label>
+                <input matInput formControlName="imageUrl">
+            </mat-form-field>
+        </div>
+    
+        <button mat-raised-button color="primary" routerLink="/admin/books" type="button">Back</button>
+        <button mat-raised-button color="accent" [disabled]="form.invalid">Submit</button>
+    </form>
+    
+    <div class="book-card">
+        <book-card [book]="form.value"></book-card>
+    </div>
+</div>

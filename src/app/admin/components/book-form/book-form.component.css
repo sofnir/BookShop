@@ -1,0 +1,19 @@
+#container {
+    width: 100%;
+    overflow: hidden;
+    padding: 4px;
+}
+
+form {
+    width: 250px;
+    margin-bottom: 20px;
+    float: left;
+}
+
+button {
+    margin-right: 10px;    
+}
+
+.book-card {    
+    overflow: hidden;    
+}
