@@ -1,1 +1,18 @@
-<p>products works!</p>
+<div class="container">    
+    <mat-form-field appearance="standard">
+        <mat-label>Category</mat-label>
+        <mat-select (selectionChange)="filterBooksByCategory($event)">
+            <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-grid-list cols="3" rowHeight="1:1.1">
+        <div>
+            <div *ngFor="let book of filteredBooks">
+                <mat-grid-tile>
+                    <book-card [book]="book"></book-card>
+                </mat-grid-tile>
+            </div>
+        </div>        
+    </mat-grid-list>
+</div>
