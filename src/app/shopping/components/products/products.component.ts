@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
   ]
 
   constructor(private bookService: BookService) {
-    this.booksSubscribtion = bookService.books$.subscribe(books => {
+    this.booksSubscribtion = bookService.getAll().subscribe(books => {
       this.allBooks = this.filteredBooks = books;
     });
   }
@@ -37,6 +37,6 @@ export class ProductsComponent implements OnInit {
       this.filteredBooks = this.allBooks;  
     } else {
       this.filteredBooks = this.allBooks.filter(b => b.category == $event.value);
-    }    
+    }
   }
 }

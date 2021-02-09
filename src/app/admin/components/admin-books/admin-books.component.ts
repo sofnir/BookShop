@@ -12,22 +12,22 @@ import { BookService } from '../../../shared/services/book.service';
 export class AdminBooksComponent implements OnInit, OnDestroy {  
   displayedColumns: string[] = ['title', 'author', 'price', 'category', 'actions'];
   subscribe: Subscription;
-  dataSource = new MatTableDataSource<Book>();  
+  dataSource = new MatTableDataSource<Book>();
 
-  constructor(private bookService: BookService) { 
-    this.subscribe = this.bookService.books$.subscribe(books => {
+  constructor(private bookService: BookService) {
+    this.subscribe = this.bookService.getAll().subscribe(books => {
       this.dataSource = new MatTableDataSource(books);
-    });
-  }  
+    })
+  }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
   }
 
   ngOnDestroy(): void {
     this.subscribe.unsubscribe();
   }
 
-  delete(id: string) {    
+  delete(id: string) {
     this.bookService.delete(id);
   }
 

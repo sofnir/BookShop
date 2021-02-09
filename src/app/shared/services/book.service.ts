@@ -9,18 +9,20 @@ import { Book } from '../models/book';
 export class BookService {
   constructor(private firestore: AngularFirestore) {}
 
-  firestoreCollection = this.firestore.collection('books');
+  firestoreCollection = this.firestore.collection('books');  
 
-  //READ
-  books$ = this.firestoreCollection.snapshotChanges().pipe(
-    map(actions => {
-      return actions.map(p => {
-        const book = p.payload.doc as any;
-        const id = book.id;
-        return { id, ...book.data() as any } as Book;
+  //READ  
+  getAll() {
+    return this.firestoreCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(p => {
+          const book = p.payload.doc as any;
+          const id = book.id;
+          return { id, ...book.data() as any } as Book;
+        })
       })
-    })
-  );
+    );
+  }  
 
   get(id: string) {
     return this.firestoreCollection.doc(id).snapshotChanges().pipe(
