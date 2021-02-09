@@ -16,7 +16,7 @@ import { ShoppingCartComponent } from './shopping/components/shopping-cart/shopp
 import { OrdersComponent } from './shopping/components/orders/orders.component';
 import { ProductsComponent } from './shopping/components/products/products.component';
 import { LoginComponent } from './core/components/login/login.component';
-import { AuthGuard } from './shared/services/auth-guard.service';
+import { AuthGuardService } from './shared/services/auth-guard.service';
 import { AdminAuthGuardService } from './admin/services/admin-auth-guard.service';
 import { BookFormComponent } from './admin/components/book-form/book-form.component';
 import { BookCardComponent } from './shared/components/book-card/book-card.component';
@@ -46,12 +46,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
-      { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
-      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuardService] },
-      { path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuard, AdminAuthGuardService] },
-      { path: 'admin/books/new', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuardService] },
-      { path: 'admin/books/:id', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuardService] }
+      { path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuardService] },
+      { path: 'orders', component: OrdersComponent, canActivate: [AuthGuardService] },
+      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
+      { path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
+      { path: 'admin/books/new', component: BookFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
+      { path: 'admin/books/:id', component: BookFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] }
     ])
   ],
   providers: [],
