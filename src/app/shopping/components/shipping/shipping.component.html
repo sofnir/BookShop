@@ -1,0 +1,49 @@
+<div *ngIf="shoppingCart$ | async as cart">
+    <h1>Shipping</h1>
+    <div id="container">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <mat-form-field appearance="standard">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="standard">
+                    <mat-label>Adress</mat-label>
+                    <input matInput formControlName="adress">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="standard">
+                    <mat-label>City</mat-label>
+                    <input matInput formControlName="city">
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" [disabled]="form.invalid" routerLink='/order-success'>Place Order</button>
+        </form>
+
+        <mat-card>
+            <h1>Order Summary</h1>
+            <h3>You have {{cart.getTotalItemsCount()}} items in your shopping cart.</h3>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="title">
+                    <th mat-header-cell *matHeaderCellDef> Title </th>
+                    <td mat-cell *matCellDef="let element"> {{element.quantity}} x {{element.book.title}} </td>
+                    <td mat-footer-cell *matFooterCellDef>Total</td>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef> Price </th>
+                    <td mat-cell *matCellDef="let element"> {{element.book.price | currency}} </td>
+                    <td mat-footer-cell *matFooterCellDef> {{cart.getTotalPrice() | currency}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+            </table>            
+        </mat-card>
+    </div>
+</div>

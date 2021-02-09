@@ -22,6 +22,8 @@ import { BookFormComponent } from './admin/components/book-form/book-form.compon
 import { BookCardComponent } from './shared/components/book-card/book-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductQuantityComponent } from './shared/components/product-quantity/product-quantity.component';
+import { ShippingComponent } from './shopping/components/shipping/shipping.component';
+import { OrderSuccessComponent } from './shopping/components/order-success/order-success.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ProductQuantityComponent } from './shared/components/product-quantity/p
     ProductsComponent,
     BookFormComponent,
     BookCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShippingComponent,
+    OrderSuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,8 @@ import { ProductQuantityComponent } from './shared/components/product-quantity/p
       { path: '', component: ProductsComponent },
       { path: 'login', component: LoginComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuardService] },
+      { path: 'shipping', component: ShippingComponent, canActivate: [AuthGuardService] },
+      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
       { path: 'orders', component: OrdersComponent, canActivate: [AuthGuardService] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
       { path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
