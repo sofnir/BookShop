@@ -1,0 +1,6 @@
+<div style="display: inline-block;">
+    <button mat-raised-button color="primary" (click)="addToCart()" style="float: left;">+</button>
+    <p style="float: left; margin: 10px;">{{ getQuantity() }} in cart</p>
+    <button style="float: left;" mat-raised-button color="warn" (click)="removeFromCart()">-</button>
+    <div style="clear: both;"></div>
+</div>

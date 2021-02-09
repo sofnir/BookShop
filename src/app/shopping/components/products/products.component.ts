@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Book } from 'src/app/shared/models/book';
+import { ShoppingCart } from 'src/app/shared/models/shopping-cart';
 import { BookService } from 'src/app/shared/services/book.service';
+import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
 
 @Component({
   selector: 'app-products',
@@ -18,14 +20,16 @@ export class ProductsComponent implements OnInit {
     'Fantasy',
     'History'
   ]
+  shoppingCart$?: Observable<ShoppingCart>;
 
-  constructor(private bookService: BookService) {
+  constructor(private bookService: BookService, private cartService: ShoppingCartService) {
     this.booksSubscribtion = bookService.getAll().subscribe(books => {
       this.allBooks = this.filteredBooks = books;
     });
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {    
+    this.shoppingCart$ = await this.cartService.getCart();
   }
 
   ngOnDestroy(): void {

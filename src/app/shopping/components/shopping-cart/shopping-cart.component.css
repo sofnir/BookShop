@@ -1,0 +1,24 @@
+table {
+    width: 100%;    
+    margin-top: 10px;
+}
+
+button {
+    margin-right: 10px;
+}
+
+.table-container {
+    margin-top: 10px;
+    max-height: 600px;
+    overflow: auto;
+    padding: 5px;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+tr.mat-footer-row {
+    font-weight: bold;
+}

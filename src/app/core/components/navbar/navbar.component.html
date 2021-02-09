@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
     <button mat-button routerLink="">Home</button>    
-    <button mat-button routerLink="shopping-cart">Shopping Cart</button>
+    <button mat-button routerLink="shopping-cart" *ngIf="shoppingCart$ | async as cart">Shopping Cart ({{ cart.getTotalItemsCount() }})</button>
     <ng-template #anonymousUser>
         <button *ngIf="!appUser" mat-button routerLink="login">Login</button>
     </ng-template>

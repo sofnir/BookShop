@@ -7,10 +7,10 @@
     </mat-form-field>
 
     <mat-grid-list cols="3" rowHeight="1:1.1">
-        <div>
+        <div *ngIf="shoppingCart$ | async as cart">
             <div *ngFor="let book of filteredBooks">
                 <mat-grid-tile>
-                    <book-card [book]="book"></book-card>
+                    <book-card [book]="book" [show-actions]="true" [shopping-cart]="cart"></book-card>
                 </mat-grid-tile>
             </div>
         </div>        

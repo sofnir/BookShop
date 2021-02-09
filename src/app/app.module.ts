@@ -21,6 +21,7 @@ import { AdminAuthGuardService } from './admin/services/admin-auth-guard.service
 import { BookFormComponent } from './admin/components/book-form/book-form.component';
 import { BookCardComponent } from './shared/components/book-card/book-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductQuantityComponent } from './shared/components/product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OrdersComponent,
     ProductsComponent,
     BookFormComponent,
-    BookCardComponent
+    BookCardComponent,
+    ProductQuantityComponent
   ],
   imports: [
     BrowserModule,
